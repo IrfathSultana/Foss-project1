@@ -57,23 +57,7 @@ public class Bismillah extends ActionBarActivity {
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            AlertDialog.Builder a_builder =new AlertDialog.Builder(Bismillah.this);
-                            a_builder.setMessage("Do you want to close this App?").setCancelable(false).setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    finish();
-                                }
-
-                            }).setNegativeButton("No",new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            });
-                            AlertDialog alert = a_builder.create();
-                            alert.setTitle("Alhamdulillah");
-                            alert.show();
-                        }
+                            
                     }
             );
 
@@ -95,7 +79,7 @@ public class Bismillah extends ActionBarActivity {
                 Intent intent = new Intent();
                 PendingIntent pendingIntent = PendingIntent.getActivity(Bismillah.this, 0, intent, 0);
                 Notification notification = new Notification.Builder(Bismillah.this).setTicker("TickerTitle")
-                        .setContentTitle("Al-Quddus Islamic App")
+                        .setContentTitle("Al-Quddus")
                         .setContentText("Earn Rewards")
                         .setSmallIcon(R.mipmap.main)
                         .setContentIntent(pendingIntent).getNotification();
@@ -118,6 +102,7 @@ public class Bismillah extends ActionBarActivity {
                         "\n \n :>If you find anything incorrect, please e-mail us at irffu96@gmail.com" +
                         "\n \n :>Feel free to contact us at 9791062003" +
                         "\n \n :>We will verify and correct any issues reported " +
+                        "\n \n :>In case of modifying the code,The content should be authentic" +
                         "\n             JazakhAllah Khairan").setCancelable(false).setPositiveButton("Ok",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -130,6 +115,27 @@ public class Bismillah extends ActionBarActivity {
                 alert.show();
 
             }
+             case R.id.help_id:
+            {
+            AlertDialog.Builder a_builder =new AlertDialog.Builder(Bismillah.this);
+                            a_builder.setMessage("Do you want to close this App?").setCancelable(false).setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                  Intent intent=new Intent("contactmanager.al_quddusislamicapp.AboutQueries");
+                        startActivity(intent);
+                                }
+
+                            }).setNegativeButton("No",new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alert = a_builder.create();
+                            alert.setTitle("Exit");
+                            alert.show();
+                        }
+        }
             default:
                     return super.onOptionsItemSelected(item);
         }
